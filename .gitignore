@@ -5,7 +5,7 @@ Temp/*
 .gradle/*
 obj/* 
 Builds/*
-Versioning/*
+Versionings/*
  
 .vsconfig 
 *.sln 
