@@ -1,3 +1,3 @@
 # Find-Out-Animals
- - File Project Find Out Animals Thesis
+ - College Final Project Find Out Animals
  - Preview Game https://bit.ly/3yyc7L9
