@@ -15,6 +15,11 @@ public class ArsipAir : MonoBehaviour
     public bool[] hewanClick = { false, false, false};
     public bool[] hewanCanvas = { false, false, false };
 
+    [Header("Holder")]
+    public GameObject buttonHolder;
+    public GameObject arsipHolder;
+    public Button[] closeArsip;
+
     [Header("Kunci Arsip Air")]
     public GameObject[] lockAir;
     public bool lockArsipAir0;
@@ -71,6 +76,11 @@ public class ArsipAir : MonoBehaviour
         hewanButton[0].onClick.AddListener(Hewan0);
         hewanButton[1].onClick.AddListener(Hewan1);
         hewanButton[2].onClick.AddListener(Hewan2);
+
+        foreach (Button btn in closeArsip)
+        {
+            btn.onClick.AddListener(CloseArsip);
+        }
     }
 
     void Update()
@@ -236,6 +246,11 @@ public class ArsipAir : MonoBehaviour
     {
         hewanClick[2] = true;
         Debug.Log("hewan 2 click");
+    }
+    public void CloseArsip()
+    {
+        arsipHolder.SetActive(false);
+        buttonHolder.SetActive(true);
     }
 
     public void ButtonLock() // Pop up notifikasi terkunci

@@ -13,6 +13,9 @@ public class ArsipManager : MonoBehaviour
     public Button[] jenisHewanButton;
     public CanvasGroup[] jenisHewanCanvas;
 
+    public GameObject buttonHolder;
+    public GameObject arsipHolder;
+
     void Start()
     {
         jenisHewanButton[0].onClick.AddListener(JenisDarat);
@@ -48,6 +51,7 @@ public class ArsipManager : MonoBehaviour
         arsipUdara.merakCanvas.DOFade(0f, 0.5f);
         arsipUdara.merpatiCanvas.DOFade(0f, 0.5f);
 
+        Holder();
         Debug.Log("Menu Darat Clicked");
     }
 
@@ -73,6 +77,7 @@ public class ArsipManager : MonoBehaviour
         arsipUdara.merakCanvas.DOFade(0f, 0.5f);
         arsipUdara.merpatiCanvas.DOFade(0f, 0.5f);
 
+        Holder();
         Debug.Log("Menu Air Clicked");
     }
 
@@ -98,6 +103,13 @@ public class ArsipManager : MonoBehaviour
         arsipAir.koiCanvas.DOFade(0f, 0.5f);
         arsipAir.pausCanvas.DOFade(0f, 0.5f);
 
+        Holder();
         Debug.Log("Menu Udara Clicked");
+    }
+
+    private void Holder()
+    {
+        buttonHolder.SetActive(false);
+        arsipHolder.SetActive(true);
     }
 }

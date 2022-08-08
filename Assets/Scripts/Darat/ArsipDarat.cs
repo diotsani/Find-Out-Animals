@@ -15,6 +15,12 @@ public class ArsipDarat : MonoBehaviour
     public bool[] hewanClick = { false, false, false};
     public bool[] hewanCanvas = { false, false, false };
 
+    [Header("Holder")]
+    public GameObject buttonHolder;
+    public GameObject arsipHolder;
+    public Button[] closeArsip;
+    public Button[] closeImage;
+
     [Header("Kunci Arsip Darat")]
     public GameObject[] lockDarat;
     public bool lockArsipDarat0;
@@ -71,12 +77,26 @@ public class ArsipDarat : MonoBehaviour
         hewanButton[0].onClick.AddListener(Hewan0);
         hewanButton[1].onClick.AddListener(Hewan1);
         hewanButton[2].onClick.AddListener(Hewan2);
+
+        foreach(Button btn in closeArsip)
+        {
+            btn.onClick.AddListener(CloseArsip);
+        }
+
+        foreach (Button btn in closeImage)
+        {
+            btn.onClick.AddListener(CloseImage);
+        }
+
+        
+        
     }
 
     void Update()
     {
         if (hewanClick[0] == true) // Panda
         {
+            OpenImage();
 
             pandaCanvas.gameObject.SetActive(true);
             gajahCanvas.gameObject.SetActive(false);
@@ -97,6 +117,8 @@ public class ArsipDarat : MonoBehaviour
 
         if (hewanClick[1] == true) // Gajah
         {
+            OpenImage();
+
             pandaCanvas.gameObject.SetActive(false);
             gajahCanvas.gameObject.SetActive(true);
             rusaCanvas.gameObject.SetActive(false);
@@ -114,6 +136,8 @@ public class ArsipDarat : MonoBehaviour
 
         if (hewanClick[2] == true) // Rusa
         {
+            OpenImage();
+
             pandaCanvas.gameObject.SetActive(false);
             gajahCanvas.gameObject.SetActive(false);
             rusaCanvas.gameObject.SetActive(true);
@@ -142,12 +166,17 @@ public class ArsipDarat : MonoBehaviour
             canvasMenu.DOFade(0f, 0.5f);
             pandaImage.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(350f, 350f), 0.5f);
             pandaImage.gameObject.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 0.5f);
+
+            pandaImage.gameObject.SetActive(true);
+            gajahImage.gameObject.SetActive(false);
+            rusaImage.gameObject.SetActive(false);
             //pandaText.DOFade(0f, 0.5f);
             pandaBack.gameObject.SetActive(true);
 
             infoButtonDarat[0].gameObject.SetActive(false);
             bgDarat[0].gameObject.SetActive(true);
 
+            
             Debug.Log("Info Panda Clicked");
         }
 
@@ -156,6 +185,10 @@ public class ArsipDarat : MonoBehaviour
             canvasMenu.DOFade(0f, 0.5f);
             gajahImage.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(350f, 350f), 0.5f);
             gajahImage.gameObject.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 0.5f);
+
+            pandaImage.gameObject.SetActive(false);
+            gajahImage.gameObject.SetActive(true);
+            rusaImage.gameObject.SetActive(false);
             //pandaText.DOFade(0f, 0.5f);
             gajahBack.gameObject.SetActive(true);
 
@@ -170,6 +203,11 @@ public class ArsipDarat : MonoBehaviour
             canvasMenu.DOFade(0f, 0.5f);
             rusaImage.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(350f, 350f), 0.5f);
             rusaImage.gameObject.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 0.5f);
+
+            pandaImage.gameObject.SetActive(false);
+            gajahImage.gameObject.SetActive(false);
+            rusaImage.gameObject.SetActive(true);
+
             //pandaText.DOFade(0f, 0.5f);
             rusaBack.gameObject.SetActive(true);
 
@@ -188,14 +226,16 @@ public class ArsipDarat : MonoBehaviour
             pandaCanvas.DOFade(0f, 0.5f);
             canvasMenu.DOFade(1f, 0.5f);
 
-            pandaImage.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(250f, 250f), 0.5f);
-            pandaImage.gameObject.GetComponent<RectTransform>().DOAnchorPos(new Vector2(200, -35), 0.5f);
+            pandaImage.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(350f, 350f), 0.5f);
+            pandaImage.gameObject.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, -25), 0.5f);
             pandaBack.gameObject.SetActive(false);
 
             hewanCanvas[0] = false;
 
             infoButtonDarat[0].gameObject.SetActive(true);
             bgDarat[0].gameObject.SetActive(false);
+
+            CloseImage();
         }
 
         if (hewanCanvas[1] == true) // Gajah
@@ -203,14 +243,16 @@ public class ArsipDarat : MonoBehaviour
             gajahCanvas.DOFade(0f, 0.5f);
             canvasMenu.DOFade(1f, 0.5f);
 
-            gajahImage.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(250f, 250f), 0.5f);
-            gajahImage.gameObject.GetComponent<RectTransform>().DOAnchorPos(new Vector2(200, -35), 0.5f);
+            gajahImage.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(350f, 350f), 0.5f);
+            gajahImage.gameObject.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, -25), 0.5f);
             gajahBack.gameObject.SetActive(false);
 
             hewanCanvas[1] = false;
 
             infoButtonDarat[1].gameObject.SetActive(true);
             bgDarat[1].gameObject.SetActive(false);
+
+            CloseImage();
         }
 
         if (hewanCanvas[2] == true) // Rusa
@@ -218,14 +260,16 @@ public class ArsipDarat : MonoBehaviour
             rusaCanvas.DOFade(0f, 0.5f);
             canvasMenu.DOFade(1f, 0.5f);
 
-            rusaImage.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(250f, 250f), 0.5f);
-            rusaImage.gameObject.GetComponent<RectTransform>().DOAnchorPos(new Vector2(200, -35), 0.5f);
+            rusaImage.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(350f, 350f), 0.5f);
+            rusaImage.gameObject.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, -25), 0.5f);
             rusaBack.gameObject.SetActive(false);
 
             hewanCanvas[2] = false;
 
             infoButtonDarat[2].gameObject.SetActive(true);
             bgDarat[2].gameObject.SetActive(false);
+
+            CloseImage();
         }
     }
 
@@ -245,6 +289,25 @@ public class ArsipDarat : MonoBehaviour
     {
         hewanClick[2] = true;
         Debug.Log("hewan 2 click");
+    }
+
+    public void CloseArsip()
+    {
+        arsipHolder.SetActive(false);
+        buttonHolder.SetActive(true);
+    }
+
+    private void CloseImage()
+    {
+        pandaImage.gameObject.SetActive(false);
+        gajahImage.gameObject.SetActive(false);
+        rusaImage.gameObject.SetActive(false);
+    }
+    private void OpenImage()
+    {
+        pandaImage.gameObject.SetActive(true);
+        gajahImage.gameObject.SetActive(true);
+        rusaImage.gameObject.SetActive(true);
     }
 
     public void ButtonLock() // Pop up notifikasi terkunci
