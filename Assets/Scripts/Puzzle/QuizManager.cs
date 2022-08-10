@@ -11,6 +11,9 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private GameObject gameover;
     [SerializeField] private GameObject nextBtn;
     [SerializeField] private GameObject backBtn;
+    [SerializeField] private GameObject tutorialBtn;
+    [SerializeField] private GameObject panelTutorial;
+    [SerializeField] private GameObject backPanel;
 
     [Header("Game Manager")]
     public GameManager gameManagerDarat;
@@ -128,6 +131,8 @@ public class QuizManager : MonoBehaviour
                 else
                 {
                     backBtn.SetActive(false);
+                    tutorialBtn.SetActive(false);
+
                     nextBtn.SetActive(true);
                     gameover.SetActive(true);
                     
@@ -150,6 +155,16 @@ public class QuizManager : MonoBehaviour
         //SceneManager.LoadScene(2);
         //UserDataManager.Save();
 
+    }
+
+    public void TutorialButton()
+    {
+        panelTutorial.SetActive(true);
+    }
+
+    public void BackTutorial()
+    {
+        panelTutorial.SetActive(false);
     }
 
     public void NextPanda()

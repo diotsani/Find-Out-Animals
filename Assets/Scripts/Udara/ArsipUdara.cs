@@ -85,6 +85,75 @@ public class ArsipUdara : MonoBehaviour
 
     void Update()
     {
+        NewHewan();
+    }
+    public void NewHewan()
+    {
+        if (hewanClick[0] == true)
+        {
+            kakatuaCanvas.gameObject.SetActive(true);
+            kakatuaCanvas.DOFade(1f, 0.5f);
+
+            hewanCanvas[0] = true;
+            hewanCanvas[1] = false;
+            hewanCanvas[2] = false;
+
+            hewanClick[0] = false;
+        }
+
+        if (hewanClick[1] == true)
+        {
+            merakCanvas.gameObject.SetActive(true);
+            merakCanvas.DOFade(1f, 0.5f);
+
+            hewanCanvas[0] = false;
+            hewanCanvas[1] = true;
+            hewanCanvas[2] = false;
+
+            hewanClick[1] = false;
+        }
+
+        if (hewanClick[2] == true)
+        {
+            merpatiCanvas.gameObject.SetActive(true);
+            merpatiCanvas.DOFade(1f, 0.5f);
+
+            hewanCanvas[0] = false;
+            hewanCanvas[1] = false;
+            hewanCanvas[2] = true;
+
+            hewanClick[2] = false;
+        }
+
+    }
+    public void NewBackHewan()
+    {
+        if (hewanCanvas[0] == true)
+        {
+            kakatuaCanvas.DOFade(0f, 0.5f);
+            kakatuaCanvas.gameObject.SetActive(false);
+
+            hewanCanvas[0] = false;
+        }
+
+        if (hewanCanvas[1] == true)
+        {
+            merakCanvas.DOFade(0f, 0.5f);
+            merakCanvas.gameObject.SetActive(false);
+
+            hewanCanvas[1] = false;
+        }
+
+        if (hewanCanvas[2] == true)
+        {
+            merpatiCanvas.DOFade(0f, 0.5f);
+            merpatiCanvas.gameObject.SetActive(false);
+
+            hewanCanvas[2] = false;
+        }
+    }
+    public void HewanOnClick()
+    {
         if (hewanClick[0] == true) // kakatua
         {
             kakatuaCanvas.gameObject.SetActive(true);
@@ -135,11 +204,6 @@ public class ArsipUdara : MonoBehaviour
 
             hewanClick[2] = false;
         }
-    }
-
-    public void CanvasGroup()
-    {
-        
     }
 
     public void InfoHewan()

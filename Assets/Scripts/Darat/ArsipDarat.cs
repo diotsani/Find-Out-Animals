@@ -87,12 +87,81 @@ public class ArsipDarat : MonoBehaviour
         {
             btn.onClick.AddListener(CloseImage);
         }
+    }
 
-        
-        
+    public void NewHewan()
+    {
+        if(hewanClick[0] == true)
+        {
+            pandaCanvas.gameObject.SetActive(true);
+            pandaCanvas.DOFade(1f, 0.5f);
+
+            hewanCanvas[0] = true;
+            hewanCanvas[1] = false;
+            hewanCanvas[2] = false;
+
+            hewanClick[0] = false;
+        }
+
+        if(hewanClick[1]==true)
+        {
+            gajahCanvas.gameObject.SetActive(true);
+            gajahCanvas.DOFade(1f, 0.5f);
+
+            hewanCanvas[0] = false;
+            hewanCanvas[1] = true;
+            hewanCanvas[2] = false;
+
+            hewanClick[1] = false;
+        }
+
+        if (hewanClick[2] == true)
+        {
+            rusaCanvas.gameObject.SetActive(true);
+            rusaCanvas.DOFade(1f, 0.5f);
+
+            hewanCanvas[0] = false;
+            hewanCanvas[1] = false;
+            hewanCanvas[2] = true;
+
+            hewanClick[2] = false;
+        }
+
+    }
+
+    public void NewBackHewan()
+    {
+        if(hewanCanvas[0] == true)
+        {
+            pandaCanvas.DOFade(0f, 0.5f);
+            pandaCanvas.gameObject.SetActive(false);
+
+            hewanCanvas[0] = false;
+        }
+
+        if (hewanCanvas[1] == true)
+        {
+            gajahCanvas.DOFade(0f, 0.5f);
+            gajahCanvas.gameObject.SetActive(false);
+
+            hewanCanvas[1] = false;
+        }
+
+        if (hewanCanvas[2] == true)
+        {
+            rusaCanvas.DOFade(0f, 0.5f);
+            rusaCanvas.gameObject.SetActive(false);
+
+            hewanCanvas[2] = false;
+        }
     }
 
     void Update()
+    {
+        NewHewan();
+    }
+    #region HewanClickTrue
+    public void HewanOnClick()
     {
         if (hewanClick[0] == true) // Panda
         {
@@ -112,7 +181,7 @@ public class ArsipDarat : MonoBehaviour
 
             hewanClick[0] = false;
 
-            
+
         }
 
         if (hewanClick[1] == true) // Gajah
@@ -153,12 +222,9 @@ public class ArsipDarat : MonoBehaviour
             hewanClick[2] = false;
         }
     }
+    #endregion
 
-    public void CanvasGroup()
-    {
-        
-    }
-
+    #region InfoHewan
     public void InfoHewan()
     {
         if(hewanCanvas[0] == true) // Panda
@@ -218,7 +284,9 @@ public class ArsipDarat : MonoBehaviour
         }
 
     }
+    #endregion Info Hewan Info Hewan InfoHewan InfoHewan
 
+    #region BackHewan
     public void BackHewan()
     {
         if (hewanCanvas[0] == true) // Panda
@@ -272,22 +340,26 @@ public class ArsipDarat : MonoBehaviour
             CloseImage();
         }
     }
+    #endregion
 
     public void Hewan0() // Panda
     {
         hewanClick[0] = true;
+        //arsipHolder.SetActive(false);
         Debug.Log("hewan 0 click");
     }
 
     public void Hewan1() // Gajah
     {
         hewanClick[1] = true;
+        //arsipHolder.SetActive(false);
         Debug.Log("hewan 1 click");
     }
 
     public void Hewan2() // Rusa
     {
         hewanClick[2] = true;
+        //arsipHolder.SetActive(false);
         Debug.Log("hewan 2 click");
     }
 
@@ -302,6 +374,8 @@ public class ArsipDarat : MonoBehaviour
         pandaImage.gameObject.SetActive(false);
         gajahImage.gameObject.SetActive(false);
         rusaImage.gameObject.SetActive(false);
+
+        arsipHolder.SetActive(true);
     }
     private void OpenImage()
     {

@@ -19,6 +19,7 @@ public class ArsipAir : MonoBehaviour
     public GameObject buttonHolder;
     public GameObject arsipHolder;
     public Button[] closeArsip;
+    public Button[] closeImage;
 
     [Header("Kunci Arsip Air")]
     public GameObject[] lockAir;
@@ -85,6 +86,78 @@ public class ArsipAir : MonoBehaviour
 
     void Update()
     {
+        NewHewan();
+    }
+
+    public void NewHewan()
+    {
+        if (hewanClick[0] == true)
+        {
+            lumbaCanvas.gameObject.SetActive(true);
+            lumbaCanvas.DOFade(1f, 0.5f);
+
+            hewanCanvas[0] = true;
+            hewanCanvas[1] = false;
+            hewanCanvas[2] = false;
+
+            hewanClick[0] = false;
+        }
+
+        if (hewanClick[1] == true)
+        {
+            koiCanvas.gameObject.SetActive(true);
+            koiCanvas.DOFade(1f, 0.5f);
+
+            hewanCanvas[0] = false;
+            hewanCanvas[1] = true;
+            hewanCanvas[2] = false;
+
+            hewanClick[1] = false;
+        }
+
+        if (hewanClick[2] == true)
+        {
+            pausCanvas.gameObject.SetActive(true);
+            pausCanvas.DOFade(1f, 0.5f);
+
+            hewanCanvas[0] = false;
+            hewanCanvas[1] = false;
+            hewanCanvas[2] = true;
+
+            hewanClick[2] = false;
+        }
+
+    }
+
+    public void NewBackHewan()
+    {
+        if (hewanCanvas[0] == true)
+        {
+            lumbaCanvas.DOFade(0f, 0.5f);
+            lumbaCanvas.gameObject.SetActive(false);
+
+            hewanCanvas[0] = false;
+        }
+
+        if (hewanCanvas[1] == true)
+        {
+            koiCanvas.DOFade(0f, 0.5f);
+            koiCanvas.gameObject.SetActive(false);
+
+            hewanCanvas[1] = false;
+        }
+
+        if (hewanCanvas[2] == true)
+        {
+            pausCanvas.DOFade(0f, 0.5f);
+            pausCanvas.gameObject.SetActive(false);
+
+            hewanCanvas[2] = false;
+        }
+    }
+
+    public void HewanOnClick()
+    {
         if (hewanClick[0] == true) // lumba
         {
             lumbaCanvas.gameObject.SetActive(true);
@@ -135,11 +208,6 @@ public class ArsipAir : MonoBehaviour
 
             hewanClick[2] = false;
         }
-    }
-
-    public void CanvasGroup()
-    {
-        
     }
 
     public void InfoHewan()
