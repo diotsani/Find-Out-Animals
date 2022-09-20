@@ -1,10 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayMenuManager : MonoBehaviour
 {
+    [Header("Button")]
+    public Button tutorialButton;
+    public Button closeButton;
+    public GameObject tutorialPanel;
     [Header("Jawaban Darat")]
     public GameObject[] starsDarat;
     public bool jawabanBenarDarat0;
@@ -21,6 +23,8 @@ public class PlayMenuManager : MonoBehaviour
 
     public void Awake()
     {
+        tutorialButton.onClick.AddListener(() => SetTutorialButton(true));
+        closeButton.onClick.AddListener(() => SetTutorialButton(false));
         //---------------------------------------------------------------------DARAT
         jawabanBenarDarat0 = UserDataManager.Progress.jawabanBenarDarat[0];
         jawabanBenarDarat1 = UserDataManager.Progress.jawabanBenarDarat[1];
@@ -79,14 +83,8 @@ public class PlayMenuManager : MonoBehaviour
             starsDaratUdara[2].SetActive(true);
         }
     }
-
-    void Start()
+    void SetTutorialButton(bool GetBool)
     {
-        
-    }
-
-    void Update()
-    {
-        
+        tutorialPanel.SetActive(GetBool);
     }
 }

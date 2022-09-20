@@ -26,10 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/6. PlayUdara.unity
     guid: 9193bca53cc19774c8cbae077cb57baa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/3. ArsipMenu99.unity
     guid: d89ab434ec200df4abb694acf5719302
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/New Scene.unity
     guid: a0d81528976280d40b1681c4d1d9fdd0
   m_configObjects: {}
