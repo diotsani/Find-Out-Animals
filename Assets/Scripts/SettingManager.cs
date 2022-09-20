@@ -7,6 +7,7 @@ public class SettingManager : MonoBehaviour
 {
     [Header("GammeObject")]
     public GameObject panelSetting;
+    public GameObject panelSettingMenu;
     public GameObject panelCredit;
 
     [Header("Tombol")]
@@ -68,11 +69,13 @@ public class SettingManager : MonoBehaviour
     }
     public void CreditGame()
     {
+        panelSettingMenu.SetActive(false);
         panelCredit.SetActive(true);
         Debug.Log("credit terbuka");
     }
     public void CreditGameClose()
     {
+        panelSettingMenu.SetActive(true);
         panelCredit.SetActive(false);
         Debug.Log("credit tertutup");
     }
